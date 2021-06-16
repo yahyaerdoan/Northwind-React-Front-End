@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import CartSummary from "./CartSummary";
-import { Button, Container, Menu } from "semantic-ui-react";
+import { Container, Menu } from "semantic-ui-react";
 import SignedOut from "./SignedOut";
 import SignedIn from "./Signedin";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const { cartItems } = useSelector((state) => state.cart);
   const history = useHistory();
-  
+
   function handleSignOut() {
     setIsAuthenticated(false);
     history.push("/");
@@ -24,7 +26,7 @@ export default function Navi() {
           <Menu.Item name="messages" />
 
           <Menu.Menu position="right">
-            <CartSummary />
+            {cartItems.length > 0 && <CartSummary />}
             {isAuthenticated ? (
               <SignedIn signOut={handleSignOut} bisey="1" />
             ) : (

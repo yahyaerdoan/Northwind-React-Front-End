@@ -8,7 +8,7 @@ export default function Signedin({signOut}) {
         <Image
           avatar
           spaced="right"
-          src="https://avatars.githubusercontent.com/u/10206539?v=4"
+          src="https://avatars.githubusercontent.com/u/77584301?v=4"
         />
         <Dropdown pointing="top left" text="Yahya Erdoğan">
           <Dropdown.Menu>

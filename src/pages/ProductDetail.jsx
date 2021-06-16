@@ -9,9 +9,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     let productService = new ProductService();
-    productService
-      .getById(id)
-      .then((result) => setProduct(result.data.data));
+    productService.getById(id).then((result) => setProduct(result.data.data));
   }, []);
   return (
     <div>
