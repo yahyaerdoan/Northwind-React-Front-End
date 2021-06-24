@@ -5,12 +5,15 @@ import ProductService from "../services/productService";
 
 export default function ProductDetail() {
   let { id } = useParams();
-  const [product, setProduct] = useState([]);
+
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     let productService = new ProductService();
-    productService.getById(id).then((result) => setProduct(result.data.data));
-  }, []);
+    productService
+      .getByProductName(id)
+      .then((result) => setProduct(result.data.data));
+  }, [id]);
   return (
     <div>
       <Card.Group>
@@ -22,7 +25,7 @@ export default function ProductDetail() {
               src="https://avatars.githubusercontent.com/u/10206539?v=4"
             />
             <Card.Header>{product.id}</Card.Header>
-            <Card.Meta>Friends of Elliot</Card.Meta>
+            <Card.Meta>{product.category.categoryId}</Card.Meta>
             <Card.Description>
               Steve wants to add you to the group <strong>best friends</strong>
             </Card.Description>
